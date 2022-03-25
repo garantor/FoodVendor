@@ -5,6 +5,8 @@ const Vendor = require('../models/vendor')
 const bcrypt = require('bcrypt');
 const vendor = require('../models/vendor');
 const jwtToken = require('../utils/jwtToken')
+const rolesList = require('../config/roles');
+const ROLES_OBJ = require('../config/roles');
 
 
 
@@ -23,6 +25,7 @@ async function createVendor(req, res) {
         email: email,
         PhoneNumber: PhoneNumber,
         password: hashPassword,
+        role: "Vendor",
       });
       res.send(createdVendor);
     } catch (err) {
@@ -50,10 +53,16 @@ async function loginVendor(req, resp){
         resp.status(400).json({
           message:"incorrect Password"
         });
+
       }else{
+        console.log("Were are herer")
+        console.log(passwordCheck);
+        console.log(checkUser.email);
+        console.log(checkUser._id);
          const tokenData = {
-           email: passwordCheck.email,
-           id: passwordCheck._id,
+           email: checkUser.email,
+           id: checkUser._id,
+           role: "Vendor",
          };
 
          const token = jwtToken.generateAccessToken(tokenData);

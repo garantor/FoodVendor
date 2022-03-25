@@ -8,6 +8,7 @@ const dbConnection = require("./config/db_connection.js");
 const mongoose = require('mongoose')
 const vendor = require('./routes/vendor')
 const menu = require('./routes/menu')
+const verifyRole = require("./middleware/verifyRoles");
 dbConnection()
 
 //set cors
@@ -30,7 +31,7 @@ app.use( (req, res, next)=>{
 
 
 app.use("/vendor", vendor);
-app.use("/menu", menu);
+app.use("/menu", verifyRole("Vendor"), menu);
 
 
 mongoose.connection.once("open", () => {
