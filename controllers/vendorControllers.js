@@ -55,10 +55,7 @@ async function loginVendor(req, resp){
         });
 
       }else{
-        console.log("Were are herer")
-        console.log(passwordCheck);
-        console.log(checkUser.email);
-        console.log(checkUser._id);
+      
          const tokenData = {
            email: checkUser.email,
            id: checkUser._id,
@@ -86,9 +83,4 @@ async function loginVendor(req, resp){
 };
 
 
-async function createMenu(req, resp){
-  console.log("ok")
-
-};
-
-module.exports = { createVendor, loginVendor, createMenu };
+module.exports = { createVendor, loginVendor };
