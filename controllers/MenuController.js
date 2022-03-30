@@ -49,7 +49,6 @@ async function updateMenu(req, resp){
             req.headers["x-access-token"];
         const vendorID = verifyToken(token);
         const Menu = await MENU.findById(menuID);
-        // console.log();
         const menuVendorId = Menu.vendorID.toString();
         const reqVendorId = vendorID.id;
         // only a vendor that created an order can update
@@ -68,9 +67,26 @@ async function updateMenu(req, resp){
     } else{
         resp.status(400).json({ message: "id required" });
     }
-
-   
 };
 
 
-module.exports = { createMenu, updateMenu };
+async function menuList(request, response){
+    try{
+        const allMenu = await MENU.find().select("_id name description price quantity ")
+        response.status(200).json({
+          message: allMenu,
+        });
+
+    }catch (err){
+        response.status(400).json({
+          message: err.message,
+        });
+    }
+
+};
+
+
+
+
+
+module.exports = { createMenu, updateMenu, menuList };

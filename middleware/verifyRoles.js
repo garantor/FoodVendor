@@ -11,7 +11,6 @@ function verifyRole(Roles){
           req.headers["x-access-token"];
 
         if(!token) return resp.sendStatus(401);
-        console.log(token)
         const tokenSplit = token.split(" ");
         try{
             const decoded = jwt.verify(tokenSplit[1], appSecret);
@@ -21,7 +20,6 @@ function verifyRole(Roles){
               return resp.sendStatus(401);
             }
 
-            console.log(decoded);
 
         } catch(err){
             resp.status(401).send("Invalid Token")

@@ -16,7 +16,6 @@ function decodeAccessToken(data){
       return resp.sendStatus(401);
     }
 
-    console.log(decoded);
   } catch (err) {
     resp.status(401).send("Invalid Token");
   }

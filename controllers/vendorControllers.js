@@ -48,7 +48,7 @@ async function loginVendor(req, resp){
     let checkUser = await vendor.findOne({email});
     if(checkUser){
       //user found
-      passwordCheck = await bcrypt.compare(password, checkUser.password);
+      const passwordCheck = await bcrypt.compare(password, checkUser.password);
       if(!passwordCheck){
         resp.status(400).json({
           message:"incorrect Password"
