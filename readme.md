@@ -1,5 +1,6 @@
 # FOOD VENDOR APPLICATION API
 - This is a food vendor application api to manage Customers, Vendors, Orders and Menu.
+The Api is built using the MEN(Mongodb, Express and Nodejs) stack.
 
 ## Users
 ### This application would have two types of users:
