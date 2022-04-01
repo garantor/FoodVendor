@@ -17,6 +17,7 @@ const singleOrder = new mongooseSchema({
           description: { type: String },
           quantity: { type: String },
           orderStatus: { type: String },
+          preOrder:{type:Boolean},
           amountDue: { type: Number },
           amountPaid: { type: Number },
           amountOutstanding: { type: Number },

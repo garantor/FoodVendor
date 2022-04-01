@@ -42,3 +42,5 @@ order progress and other relevant information.
 - Customer should be able to cancel order.
 - Payment for food purchased or pre-ordered (No payment integration required. A flip of payment status is sufficient).
 
+## USAGE
+- This is a node express api and you can find all available endpoints in the Routes dir

@@ -32,10 +32,12 @@ app.use( (req, res, next)=>{
     next();
 });
 
-
+app.get("/", (req, resp) => {
+  resp.sendFile(__dirname + "/views/index.html");
+});
 app.use("/vendor", vendor);
 app.use("/menu", menu);
-app.use("/order", verifyRole("Vendor"), order);
+app.use("/order", order);
 app.use("/customer", customerRoute);
 app.use("/auth", AuthRoute);
 

@@ -41,7 +41,7 @@ async function LoginCustomer(req, resp){
     const password = req.body.password || req.params.password;
     if (email && password){
         //
-        const user = await AuthTable.findOne({email});
+        const user = await AuthTable.findOne({email},{_id:0});
         if (user){
             //check password
             //user found
@@ -54,7 +54,6 @@ async function LoginCustomer(req, resp){
             }else{
                 const tokenData = {
                 email: user.email,
-                id: user._id,
                 role: user.role,
                 };
 
